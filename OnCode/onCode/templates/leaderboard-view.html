@@ -1,0 +1,30 @@
+{% extends 'layout.html' %} {% block title %}Leaderboard{% endblock %} {% block content %}
+
+
+<div>
+    <p>Leaderboard</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <td>University</td>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.user_pk.first_name }}</td>
+                <td>{{ user.university }}</td>
+                <td>{{ user.score }}</td>
+                <td>
+                    <a href="/userprofile/{{ user.pk }}/">
+                    User profile
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
