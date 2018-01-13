@@ -4,6 +4,8 @@ from models import *
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
+from onCode.forms import UserEditForm
+from django.urls import reverse
 from forms import *
 
 # Create your views here.
@@ -40,7 +42,7 @@ class UserProfileDetailView(DetailView):
 
 class ProblemsListView(ListView):
     model = Problem
-    template_name = 'problem-list-view.html'
+    template_name = 'problems-view-list.html'
     context_object_name = 'problems'   
     
     
@@ -59,3 +61,18 @@ class UserCreateView(CreateView):
             }
         )
 
+class UserUpdateView(UpdateView):
+    template_name = 'user-edit-profile-view.html'
+    form_class = UserEditForm
+    model = UserProfile
+    
+    
+    def get_success_url(self, *args, **kwargs):
+        return reverse(
+            'user-profile-view',
+            kwargs={
+                'pk': self.kwargs['pk']
+            }
+        )
+        
+        
