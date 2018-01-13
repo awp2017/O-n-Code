@@ -17,13 +17,18 @@
 
     <body>
         <div id="divBarMenu">
-            <div id="divLogo">
-                <img id="logoImg" src="https://cdn.pixabay.com/photo/2013/07/12/14/15/relaxed-148083_960_720.png" />
-            </div>
+
             <div id="divAutentification">
-                <label id="signUp">Sign Out</label>
-                <label id="line">|</label>
-                <label id="logIn">Log In</label>
+                <a href="/userprofile/{{request.user.id}}">
+        <button class="btn btn-primary">
+            View Profile
+        </button>
+    </a>
+    <a href="/leaderboard">
+        <button class="btn btn-primary">
+            Leaderboard
+        </button>
+    </a>
             </div>
         </div>
         
