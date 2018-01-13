@@ -15,3 +15,12 @@ class Problem(models.Model):
     
     def __str__(self):
         return self.title
+
+
+class UserProfile(models.Model):
+    user_pk = models.ForeignKey(User)
+    birth_date = models.DateField(blank=True)
+    university = models.CharField(max_length=100)
+    score = models.IntegerField()
+
+
