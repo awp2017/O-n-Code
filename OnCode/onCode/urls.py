@@ -1,5 +1,5 @@
 from django.conf.urls import url
-import views
+from onCode import views
 
 urlpatterns = [
     url(r'^leaderboard/$', views.LeaderboardView.as_view(), name='leaderboard_view'),
@@ -13,5 +13,7 @@ urlpatterns = [
         views.AddComment.as_view(),
         name="add_comment"
         ),
-    url(r'^problems/$', views.ProblemsListView.as_view(), name='problem_list_view'),    
+    url(r'^problems/$', views.ProblemsListView.as_view(), name='problem_list_view'),  
+    url(r'^userprofile/(?P<pk>[0-9]+)/$', views.UserProfileDetailView.as_view(), name='user-profile-view'),
+
 ]
