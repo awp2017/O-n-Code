@@ -2,11 +2,9 @@
 from __future__ import unicode_literals
 from django.views.generic import DetailView
 from django.shortcuts import render
-from models import Problem
+from models import Problem, UserProfile
 
 # Create your views here.
-
-from onCode.models import UserProfile
 
 from django.views.generic import ListView
 
@@ -19,5 +17,9 @@ class LeaderboardView(ListView):
     context_object_name = 'users'
     ordering = ['-score']
     
-    
-    
+
+class ProblemDetailView(DetailView):
+    template_name = 'problem.html'
+    model = Problem
+    context_object_name = 'problem'
+
