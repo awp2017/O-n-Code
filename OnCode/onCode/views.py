@@ -7,6 +7,7 @@ from django.views.generic import DetailView, ListView, CreateView, UpdateView, D
 from forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -66,7 +67,7 @@ class UserCreateView(CreateView):
         )
 
 
-class AddComment(CreateView):
+class AddComment(LoginRequiredMixin, CreateView):
     template_name = 'addComment.html'
     model = Comment
     form_class = AddCommentForm
@@ -112,7 +113,7 @@ def logout_view(request):
         return redirect('login')
 
 
-class UserUpdateView(UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'user-edit-profile-view.html'
     form_class = UserEditForm
     model = UserProfile

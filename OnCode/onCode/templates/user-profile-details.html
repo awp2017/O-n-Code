@@ -27,7 +27,7 @@
                 <tr>
                     <td>{{ problem.problem_id.pk }}</td>
                     <td>{{ problem.problem_id.title }}</td>
-                    <td>{{ problem.problem_id.difficulty }}</td>
+                    <td>{{ problem.problem_id.get_difficulty_display }}</td>
                     <td>
                         <a href="/Problem/{{ problem.pk }}/">
                         Details
