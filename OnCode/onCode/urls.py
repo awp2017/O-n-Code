@@ -12,5 +12,6 @@ urlpatterns = [
     url(r'^Problem/(?P<pk>[0-9]+)/AddComment/$',
         views.AddComment.as_view(),
         name="add_comment"
-        )
+        ),
+    url(r'^problems/$', views.ProblemsListView.as_view(), name='problem_list_view'),    
 ]

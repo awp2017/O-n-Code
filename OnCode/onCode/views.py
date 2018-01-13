@@ -34,3 +34,8 @@ class AddComment(CreateView):
     template_name = 'addComment.html'
     model = Comment
     context_object_name = 'Comment'
+
+class ProblemsListView(ListView):
+    model = Problem
+    template_name = 'problem-list-view.html'
+    context_object_name = 'problems'   
