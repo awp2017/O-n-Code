@@ -10,5 +10,33 @@
     <p><b>Birth date:</b> {{ userprofile.birth_date }}</p>
 
     <p><b>University:</b> {{ userprofile.university }}</p>
+
+    <div class='container'>
+        <p class='title'>Lista probleme rezolvate</p>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Nume</th>
+                    <th>Dificultate</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for problem in resolved_problems %}
+                <tr>
+                    <td>{{ problem.problem_id.pk }}</td>
+                    <td>{{ problem.problem_id.title }}</td>
+                    <td>{{ problem.problem_id.get_difficulty_display }}</td>
+                    <td>
+                        <a href="/Problem/{{ problem.pk }}/">
+                        Details
+                    </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}

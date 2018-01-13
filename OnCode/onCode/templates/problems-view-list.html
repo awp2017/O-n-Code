@@ -15,7 +15,7 @@
             <tr>
                 <td>{{ problem.pk }}</td>
                 <td>{{ problem.title }}</td>
-                <td>{{ problem.difficulty }}</td>
+                <td>{{ problem.get_difficulty_display }}</td>
                 <td>
                     <a href="/Problem/{{ problem.pk }}/">
                     <button class="btn btn-info">

@@ -41,3 +41,13 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+        
+class ResolvedProblems(models.Model):
+    problem_id = models.ForeignKey(Problem, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+    class Meta:
+        unique_together = ('problem_id', 'user_id')
+
+    def __str__(self):
+        return self.problem_id.title + " " + self.user_id.username

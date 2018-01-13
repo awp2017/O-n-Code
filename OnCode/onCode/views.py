@@ -7,6 +7,7 @@ from django.views.generic import DetailView, ListView, CreateView, UpdateView, D
 from forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -37,6 +38,11 @@ class UserProfileDetailView(DetailView):
     template_name = 'user-profile-details.html'
     model = UserProfile
     context_object_name = 'userprofile'
+    
+    def get_context_data(self, **kwargs):
+        context = super(UserProfileDetailView, self).get_context_data(**kwargs)
+        context['resolved_problems'] = ResolvedProblems.objects.filter(user_id = self.kwargs['pk'])
+        return context
 
 
 class ProblemsListView(ListView):
@@ -61,7 +67,7 @@ class UserCreateView(CreateView):
         )
 
 
-class AddComment(CreateView):
+class AddComment(LoginRequiredMixin, CreateView):
     template_name = 'addComment.html'
     model = Comment
     form_class = AddCommentForm
@@ -107,7 +113,7 @@ def logout_view(request):
         return redirect('login')
 
 
-class UserUpdateView(UpdateView):
+class UserUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'user-edit-profile-view.html'
     form_class = UserEditForm
     model = UserProfile
