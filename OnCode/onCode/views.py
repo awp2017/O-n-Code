@@ -23,6 +23,15 @@ class ProblemDetailView(DetailView):
     template_name = 'problem.html'
     model = Problem
     context_object_name = 'problem'
+    
+    def get_context_data(self, **kwargs):
+        context = super(ProblemDetailView, self).get_context_data(**kwargs)
+        context['data'] = {
+            'is_logged_user' : self.request.user.is_authenticated
+        }
+        
+        return context
+        
 
 
 class ViewComments(ListView):
@@ -40,8 +49,13 @@ class UserProfileDetailView(DetailView):
     context_object_name = 'userprofile'
     
     def get_context_data(self, **kwargs):
+
         context = super(UserProfileDetailView, self).get_context_data(**kwargs)
-        context['resolved_problems'] = ResolvedProblems.objects.filter(user_id = self.kwargs['pk'])
+        context['data'] = {
+            'resolved_problems':ResolvedProblems.objects.filter(user_id = self.kwargs['pk']),
+            'is_logged_user':self.request.user.is_authenticated
+        }
+        
         return context
 
 

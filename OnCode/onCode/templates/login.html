@@ -8,16 +8,40 @@
 </div>
 {% endif %}
 
-<form method="POST" enctype="multipart/formdata" class="form">
-    {% csrf_token %}
-    <div class="form-group">
-        <label for="id_username">Username:</label>
-        <input type="text" name="username" required="" id="id_username" class="form-control">
+<div id="divMenu">
+    <div id="divEmpty">
     </div>
-    <div class="form-group">
-        <label for="id_password">Password:</label>
-        <input type="password" name="password" required="" id="id_password" class="form-control">
+    <div id="divMenuReset">
+        <div id="divResetTitle">
+            <label id="resetTitle">Login</label>
+        </div>
+        <form method="POST" enctype="multipart/formdata" class="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="divResetEmailLabel">
+                    <label class="resetEmailLabel" for="id_username">Username:</label>
+                </div>
+                <div class="divResetEmailText">
+                    <input class="resetEmailText" type="text" name="username" required="" id="id_username" class="form-control">
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <div class="divResetEmailLabel">
+                    <label class="resetEmailLabel" for="id_password">Password:</label>
+                </div>
+                <div class="divResetEmailText">
+                    <input class="resetEmailLabel" type="password" name="password" required="" id="id_password" class="form-control">
+                </div>
+                
+                
+            
+                
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+</div>
+
+
 {% endblock %}
