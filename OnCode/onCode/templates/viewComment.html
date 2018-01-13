@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}My groups{% endblock %}
+
+{% block content %}
+
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Comment</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for com in Comment %}
+    <tr>
+        <td>{{ com.username }}</td>
+        <td>{{com.text}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

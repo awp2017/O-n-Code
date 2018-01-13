@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-from django.views.generic import DetailView
+from models import *
 from django.shortcuts import render
-from models import Problem, UserProfile
+from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
@@ -23,3 +23,14 @@ class ProblemDetailView(DetailView):
     model = Problem
     context_object_name = 'problem'
 
+class ViewComments(ListView):
+    template_name = 'viewComment.html'
+    model = Comment
+    context_object_name = 'Comment'
+    def get_queryset(self, *args, **kwargs):
+        return Comment.objects.filter(problem_id=self.kwarg['pk'])
+
+class AddComment(CreateView):
+    template_name = 'addComment.html'
+    model = Comment
+    context_object_name = 'Comment'
