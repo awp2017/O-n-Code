@@ -16,5 +16,6 @@ urlpatterns = [
     url(r'^problems/$', views.ProblemsListView.as_view(), name='problem_view_list'),  
     url(r'^userprofile/(?P<pk>[0-9]+)/$', views.UserProfileDetailView.as_view(), name='user-profile-view'),
     url(r'^userprofile/(?P<pk>[0-9]+)/edit/$', views.UserUpdateView.as_view(), name='user-edit-profile-view'),
+    url(r'^create-user/$', views.UserCreateView.as_view(), name='user-create-view'),
 
 ]

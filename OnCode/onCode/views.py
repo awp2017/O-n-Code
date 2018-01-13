@@ -2,10 +2,11 @@
 from __future__ import unicode_literals
 from models import *
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 from onCode.forms import UserEditForm
 from django.urls import reverse
-
+from forms import *
 
 # Create your views here.
 class LeaderboardView(ListView):
@@ -43,6 +44,22 @@ class ProblemsListView(ListView):
     model = Problem
     template_name = 'problems-view-list.html'
     context_object_name = 'problems'   
+    
+    
+class UserCreateView(CreateView):
+    form_class = UserCreateForm
+    template_name = 'user-create-view.html'
+    model = User
+
+    def get_success_url(self, *args, **kwargs):
+        profile = UserProfile(user_pk = self.object, score=0)
+        profile.save()
+        return reverse(
+            'edit_user_profile_view', 
+            kwargs={
+                'pk': self.object.pk
+            }
+        )
 
 class UserUpdateView(UpdateView):
     template_name = 'user-edit-profile-view.html'
