@@ -7,4 +7,5 @@ admin.site.register(UserProfile)
 admin.site.register(Problem)
 admin.site.register(Rezolvari)
 admin.site.register(Comment)
+admin.site.register(ResolvedProblems)
 # Register your models here.
