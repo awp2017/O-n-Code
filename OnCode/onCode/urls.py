@@ -10,7 +10,7 @@ urlpatterns = [
         views.ViewComments.as_view(),
         name="view_comment"),
     url(r'^Problem/(?P<pk>[0-9]+)/AddComment/$',
-        views.AddComent.as_view(),
+        views.AddComment.as_view(),
         name="add_comment"
         )
 ]
