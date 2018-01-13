@@ -6,10 +6,10 @@ urlpatterns = [
     url(r'^Problem/(?P<pk>[0-9]+)/$',
         views.ProblemDetailView.as_view(),
         name='problem_detail'),
-    url(r'^Problem/?P<pk>[0-9]+)/ViewComments/$',
+    url(r'^Problem/(?P<pk>[0-9]+)/ViewComments/$',
         views.ViewComments.as_view(),
         name="view_comment"),
-    url(r'^Problem/?<pk>[0-9]+/AddComment/$',
+    url(r'^Problem/(?P<pk>[0-9]+)/AddComment/$',
         views.AddComent.as_view(),
         name="add_comment"
         )
