@@ -11,6 +11,8 @@
                 </button>
             </a>
 </div>
+
+{% if data.is_logged_in %}
 <div class="float-sm-right">
     <a href="/Problem/{{ problem.pk }}/AddComment">
                 <button class="btn btn-primary">
@@ -18,6 +20,8 @@
                 </button>
             </a>
 </div>
+{% endif %}
+
 <div class="float-sm-right">
     <a href="/Problem/{{ problem.pk }}/ViewComments">
                 <button class="btn btn-primary">
