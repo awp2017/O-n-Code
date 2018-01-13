@@ -9,7 +9,7 @@ difficulties = [('1', 'Low'), ('2', 'Medium'), ('3', 'High'), ('4', 'God')]
 # Create your models here.
 
 class UserProfile(models.Model):
-    user_pk = models.ForeignKey(User, on_delete=models.CASCADE, unique=True)
+    user_pk = models.ForeignKey(User, on_delete=models.CASCADE, unique=True )
     birth_date = models.DateField(blank=True)
     university = models.CharField(max_length=100)
     score = models.IntegerField()
