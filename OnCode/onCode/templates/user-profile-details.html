@@ -1,0 +1,14 @@
+{% extends 'layout.html' %} {% block title %}User profile{% endblock %} {% block content %}
+
+<div>
+    <p><b>Username:</b> {{ userprofile.user_pk.username }}</p>
+
+    <p><b>Name:</b>{{ userprofile.user_pk.first_name}} {{userprofile.user_pk.last_name }}</p>
+
+    <p><b>Score:</b> {{ userprofile.score }}</p>
+
+    <p><b>Birth date:</b> {{ userprofile.birth_date }}</p>
+
+    <p><b>University:</b> {{ userprofile.university }}</p>
+</div>
+{% endblock %}

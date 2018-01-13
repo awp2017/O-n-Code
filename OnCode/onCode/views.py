@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from models import *
-from django.views.generic import DetailView, ListView
 from django.shortcuts import render
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 
@@ -32,8 +31,13 @@ class AddComment(CreateView):
     model = Comment
     context_object_name = 'Comment'
 
-
 class UserProfileDetailView(DetailView):
     template_name = 'user-profile-details.html'
     model = UserProfile
     context_object_name = 'userprofile'
+
+class ProblemsListView(ListView):
+    model = Problem
+    template_name = 'problem-list-view.html'
+    context_object_name = 'problems'   
+

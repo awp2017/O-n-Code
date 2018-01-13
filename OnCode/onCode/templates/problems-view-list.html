@@ -1,0 +1,32 @@
+{% extends 'template.html' %} {% block title %}Groups{% endblock %} {% block content %}
+
+<div class='container'>
+    <p class='title'>Lista probleme</p>
+    <table class='table'>
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>Nume</th>
+                <th>Dificultate</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for problem in problems %}
+            <tr>
+                <td>{{ problem.pk }}</td>
+                <td>{{ problem.title }}</td>
+                <td>{{ problem.difficulty }}</td>
+                <td>
+                    <a href="/problem/{{ problem.pk }}/">
+                    <button class="btn btn-info">
+                        Detalii
+                    </button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
