@@ -1,7 +1,9 @@
 {% extends 'layout.html' %} {% block title %}User profile{% endblock %} {% block content %}
 
 <div>
-    {% if data.is_logged_in %}
+   
+    <div class='container'>
+    {% if data.is_logged_user %}
     <a href="/userprofile/{{ userprofile.user_pk.pk }}/edit">
                         Edit
     </a> {% endif %}
@@ -14,8 +16,6 @@
     <p><b>Birth date:</b> {{ userprofile.birth_date }}</p>
 
     <p><b>University:</b> {{ userprofile.university }}</p>
-
-    <div class='container'>
         <p class='title'>Lista probleme rezolvate</p>
         <table class='table'>
             <thead>
@@ -41,6 +41,7 @@
                 {% endfor %}
             </tbody>
         </table>
+
     </div>
 </div>
 {% endblock %}

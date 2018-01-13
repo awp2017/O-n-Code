@@ -76,7 +76,7 @@ class UserCreateView(CreateView):
         profile = UserProfile(user_pk=self.object, score=0)
         profile.save()
         return reverse(
-            'edit_user_profile_view',
+            'user-edit-profile-view',
             kwargs={
                 'pk': self.object.pk
             }
