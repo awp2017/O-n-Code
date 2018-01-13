@@ -1,31 +1,40 @@
 {% extends 'layout.html' %} {% block title %}Problems{% endblock %} {% block content %}
 
-<div class='container'>
-    <table class='table'>
-        <thead>
-            <tr>
-                <th>Nr</th>
-                <th>Nume</th>
-                <th>Dificultate</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for problem in problems %}
-            <tr>
-                <td>{{ problem.pk }}</td>
-                <td>{{ problem.title }}</td>
-                <td>{{ problem.get_difficulty_display }}</td>
-                <td>
-                    <a href="/Problem/{{ problem.pk }}/">
-                    <button class="btn btn-info">
-                        Detalii
-                    </button>
-                    </a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+<div id="divMenu">
+    <div id="divEmpty">
+    </div>
+    <div id="divMenuReset"> 
+        <div id="divResetTitle">
+            <label id="resetTitle">Probleme</label>
+        </div>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Nume</th>
+                    <th>Dificultate</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for problem in problems %}
+                <tr>
+                    <td>{{ problem.pk }}</td>
+                    <td>{{ problem.title }}</td>
+                    <td>{{ problem.get_difficulty_display }}</td>
+                    <td>
+                        <a href="/Problem/{{ problem.pk }}/">
+                        <button class="btn btn-info">
+                            Detalii
+                        </button>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+    </div>
+</div>    
+
 {% endblock %}
