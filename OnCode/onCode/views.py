@@ -37,6 +37,11 @@ class UserProfileDetailView(DetailView):
     template_name = 'user-profile-details.html'
     model = UserProfile
     context_object_name = 'userprofile'
+    
+    def get_context_data(self, **kwargs):
+        context = super(UserProfileDetailView, self).get_context_data(**kwargs)
+        context['resolved_problems'] = ResolvedProblems.objects.filter(user_id = self.kwargs['pk'])
+        return context
 
 
 class ProblemsListView(ListView):
