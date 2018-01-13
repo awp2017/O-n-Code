@@ -125,3 +125,48 @@ class UserUpdateView(LoginRequiredMixin, UpdateView):
                 'pk': self.kwargs['pk']
             }
         )
+
+
+class GetInput(DetailView):
+    model = Rezolvari
+    template_name = "getInput.html"
+    context_object_name = "rezolvari"
+    #
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(GetInput, self).get_context_data(**kwargs)
+    #     context['x'] =  Rezolvari.objects.filter(problem=self.kwargs.get('pk'))
+    # def get_queryset(self, *args, **kwargs):
+    #     return Rezolvari.objects.filter(problem=self.kwargs.get('pk'))
+
+
+class SubmitSolution(LoginRequiredMixin, UpdateView):
+    model = User
+    template_name = "submitSolution.html"
+    context_object_name = "user"
+    form_class = SubmitSolutionForm
+
+    def form_valid(self, form):
+        # import pdb;pdb.set_trace()
+        user_id = self.request.user.id
+        self.object = form.save(commit=False)
+        raspuns = form.cleaned_data['answer']
+        answer = Rezolvari.objects.get(problem=self.kwargs.get('pk')).answer
+        pk = self.kwargs.get('pk')
+        user = UserProfile.objects.get(pk=user_id)
+        score = user.score
+        problem = Problem.objects.get(pk=self.kwargs.get('pk'))
+        difficultate = problem.difficulty
+        difficulties = {'1': 25, '2': 50, '3': 75, '4': 100}
+        if answer == raspuns:
+            problrez = ResolvedProblems(user_id=User.objects.get(pk=user_id), problem_id=problem)
+            problrez.save()
+            score += difficulties[str(difficultate)]
+        user.score = score
+        user.save()
+        return super(SubmitSolution, self).form_valid(form)
+
+
+    def get_success_url(self):
+        return reverse('problem_detail', kwargs={'pk': self.kwargs.get('pk')})
+

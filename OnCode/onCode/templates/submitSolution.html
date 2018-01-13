@@ -1,0 +1,13 @@
+{% extends 'layout.html' %} {% block title %}Enter solution{% endblock %} {% block content %}
+
+<div class='container edit-task'>
+
+    <form method="POST" enctype="multipart/formdata" class="form">
+        {% csrf_token %} {{ form.as_p }}
+        <div class='group'>
+            <button class='btn btn-success left' type="submit">Save</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,29 +1,41 @@
-{% extends 'layout.html' %} {% block title %}{{ problem.title }}{% endblock %} {% block content %}
-<h1>{{problem.title}}</h1>
-<p><b>Difficulty:</b> {{problem.get_difficulty_display}}</p>
-<p><b>Hins:</b> {{problem.hints}}</p>
-<div>{{ problem.content }}
-</div>
-<div class="float-sm-left">
-    <a href="/Problem/{{ problem.pk }}/">
+
+{% extends 'layout.html' %}
+
+{% block title %}{{ problem.title }}{% endblock %}
+
+{% block content %}
+    <h1>{{problem.title}}</h1>
+    <p> {{problem.hints}}</p>
+    <div>
+        {{ problem.content }}
+    </div>
+        <div class="float-sm-left">
+            <a href="/Problem/{{ problem.pk }}/Input" target="_blank">
+                <button class="btn btn-primary">
+                    Get Problem Input
+                </button>
+            </a>
+    </div>
+            <div class="float-sm-left">
+            <a href="/Problem/{{ problem.pk }}/SubmitSolution" target="_blank">
+                <button class="btn btn-primary">
+                    Submit
+                </button>
+            </a>
+    </div>
+    <div class="float-sm-right">
+            <a href="/Problem/{{ problem.pk }}/AddComment">
                 <button class="btn btn-primary">
                     Add Comment
                 </button>
             </a>
-</div>
-<div class="float-sm-right">
-    <a href="/Problem/{{ problem.pk }}/AddComment">
-                <button class="btn btn-primary">
-                    Add Comment
-                </button>
-            </a>
-</div>
-<div class="float-sm-right">
-    <a href="/Problem/{{ problem.pk }}/ViewComments">
+    </div>
+    <div class="float-sm-right">
+            <a href="/Problem/{{ problem.pk }}/ViewComments">
                 <button class="btn btn-primary">
                     View Comments
                 </button>
             </a>
-</div>
+    </div>
 
 {% endblock %}
