@@ -27,7 +27,9 @@ class ProblemDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ProblemDetailView, self).get_context_data(**kwargs)
         context['data'] = {
-            'is_logged_user' : self.request.user.is_authenticated
+            'is_logged_user' : self.request.user.is_authenticated,
+            'is_problem_resolved' : ResolvedProblems.objects.filter(problem_id = Problem.objects.get(pk = self.kwargs.get('pk')))
+                        .filter(user_id = User.objects.get(pk = self.request.user.pk)).exists() 
         }
         
         return context
