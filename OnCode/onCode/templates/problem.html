@@ -9,6 +9,13 @@
     <div>
         {{ problem.content }}
     </div>
+        <div class="float-sm-left">
+            <a href="/Problem/{{ problem.pk }}/">
+                <button class="btn btn-primary">
+                    Add Comment
+                </button>
+            </a>
+    </div>
     <div class="float-sm-right">
             <a href="/Problem/{{ problem.pk }}/AddComment">
                 <button class="btn btn-primary">
