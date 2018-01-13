@@ -41,7 +41,7 @@ class UserProfileDetailView(DetailView):
 
 class ProblemsListView(ListView):
     model = Problem
-    template_name = 'problem-list-view.html'
+    template_name = 'problems-view-list.html'
     context_object_name = 'problems'
 
 
