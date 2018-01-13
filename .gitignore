@@ -1,2 +1,8 @@
 \.idea/
 *.sqlite3
+
+OnCode/OnCode/wsgi\.pyc
+
+OnCode/onCode/models\.pyc
+
+OnCode/
