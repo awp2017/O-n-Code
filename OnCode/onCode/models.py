@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -17,6 +16,7 @@ class Problem(models.Model):
         return self.title
 
 
+
 class UserProfile(models.Model):
     user_pk = models.ForeignKey(User)
     birth_date = models.DateField(blank=True)
@@ -24,3 +24,7 @@ class UserProfile(models.Model):
     score = models.IntegerField()
 
 
+class Rezolvari(models.Model):
+    test = models.CharField(max_length=150000)
+    answer = models.CharField(max_length=150000)
+    problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
