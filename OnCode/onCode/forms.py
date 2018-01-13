@@ -34,3 +34,12 @@ class UserEditForm(forms.ModelForm):
 
     birth_date = forms.DateField(required=True)
     university = forms.CharField(required=True)
+
+
+class SubmitSolutionForm(forms.ModelForm):
+    class Meta:
+        model = Rezolvari
+        fields = ('answer',)
+
+    answer = forms.Textarea()
+

@@ -18,6 +18,14 @@ urlpatterns = [
     url(r'^userprofile/(?P<pk>[0-9]+)/$', views.UserProfileDetailView.as_view(), name='user-profile-view'),
     url(r'^userprofile/(?P<pk>[0-9]+)/edit/$', views.UserUpdateView.as_view(), name='user-edit-profile-view'),
     url(r'^login', views.login_view, name="login"),
-    url(r'^logout/$', views.logout_view, name="logout")
+    url(r'^logout/$', views.logout_view, name="logout"),
+    url(r'^Problem/(?P<pk>[0-9]+)/Input/$',
+        views.GetInput.as_view(),
+        name="get_input"
+        ),
+    url(r'^Problem/(?P<pk>[0-9]+)/SubmitSolution/$',
+        views.SubmitSolution.as_view(),
+        name="submit_solution"
+        )
 
 ]
