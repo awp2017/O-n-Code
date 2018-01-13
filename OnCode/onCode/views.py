@@ -28,7 +28,7 @@ class ViewComments(ListView):
     model = Comment
     context_object_name = 'Comment'
     def get_queryset(self, *args, **kwargs):
-        return Comment.objects.filter(problem_id=self.kwarg['pk'])
+        return Comment.objects.filter(problem_id=self.kwargs.get('pk'))
 
 class AddComment(CreateView):
     template_name = 'addComment.html'
